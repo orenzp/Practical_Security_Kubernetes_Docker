@@ -12,6 +12,7 @@ spec:
       # per-container security context
       # lock down privileges inside the container
       securityContext:
+        runAsUser: 1000 # replace with your user's UID
         allowPrivilegeEscalation: false # prevent sudo, etc.
         privileged: false               # prevent acting like host root
 
