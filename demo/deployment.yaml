@@ -1,5 +1,7 @@
 
 # kubectl expose deployment app --type=LoadBalancer --name=app --port=3000
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
@@ -17,8 +19,9 @@ spec:
       - name: app
         image: app
         imagePullPolicy: Never
-        ports:
-        - containerPort: 3000
+        env:
+        - name: TYPE
+          value: "app"
 ---
 apiVersion: v1
 kind: Service
@@ -32,4 +35,4 @@ spec:
       port: 3000
       targetPort: 3000
   type: LoadBalancer
-  
+
