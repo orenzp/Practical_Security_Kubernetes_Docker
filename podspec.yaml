@@ -1,0 +1,27 @@
+spec:
+  containers:
+      # basic container details
+    - name: my-container-name
+      # never use reusable tags like latest or stable
+      image: my-image:tag
+      # hardcode the listening port if Dockerfile isn't set with EXPOSE
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+
+      # per-container security context
+      # lock down privileges inside the container
+      securityContext:
+        allowPrivilegeEscalation: false # prevent sudo, etc.
+        privileged: false               # prevent acting like host root
+
+  terminationGracePeriodSeconds: 600 # default is 30, but you may need more time to gracefully shutdown (HTTP long polling, user uploads, etc)
+
+  # per-pod security context
+  # enable seccomp and force non-root user
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault   # enable seccomp and the runtimes default profile
+    runAsUser: 1001          # hardcode user to non-root if not set in Dockerfile
+    runAsGroup: 1001         # hardcode group to non-root if not set in Dockerfile
+    runAsNonRoot: true       # hardcode to non-root. Redundant to above if Dockerfile is set USER 1000
