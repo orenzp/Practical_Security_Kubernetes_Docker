@@ -16,6 +16,11 @@ COPY . .
 # Define the command to run the application
 CMD [ "node", "index.js" ]
 
+# 1. Minimize docker image size using multi-stage builds by using slim tagged node image
+
+# 2. Secure image by using a non-root user.
+
+
 # Build the docker image
 # docker build -t app .                                                                                                                                                 
 # docker run -d -it -p 3000:3000 --rm app
