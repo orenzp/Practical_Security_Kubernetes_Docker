@@ -25,10 +25,17 @@ spec:
         - name: TYPE
           value: "app-secured"
         securityContext:
-          # runAsUser: 1000
+          #runAsUser: 1000
           allowPrivilegeEscalation: false 
           privileged: false
-          runAsNonRoot: true
+          #runAsNonRoot: true
+        volumeMounts:
+        - name: app-secret-volume
+          mountPath: "/etc/app-secret"  # The path in the container where the secret will be mounted
+      volumes:
+      - name: app-secret-volume
+        secret:
+          secretName: app-secret  # The name of the secret to mount
 ---
 apiVersion: v1
 kind: Service
@@ -42,4 +49,12 @@ spec:
       port: 3000
       targetPort: 3000
   type: LoadBalancer
-
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  username: dG9wc2VjcmV0dXNlcm5hbWU=  # Base64 encoded 'topsecretusername'
+  password: dG9wc2VjcmV0cGFzc3dvcmQK  # Base64 encoded 'topsecretpassword'

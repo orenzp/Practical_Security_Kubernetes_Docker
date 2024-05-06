@@ -14,19 +14,16 @@ RUN npm install
 COPY . .
 
 # Start a new, final stage to keep our image small and secure
-FROM node:14-alpine
+FROM baseimage
 
-# Create a non-root user and give it ownership of the app directory
+# Configure container to start by default with the node user (UID 1000)
 USER node
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the build output from the previous stage
+# Copy files and grant the node user ownership on them
 COPY --chown=node:node --from=builder /app .
-
-# Expose port 3000 for the application
-EXPOSE 3000
 
 # Define the command to run the application
 CMD [ "node", "index.js" ]
