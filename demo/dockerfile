@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Start a new, final stage to keep our image small and secure
-FROM baseimage
+FROM node:lts-slim
 
 # Configure container to start by default with the node user (UID 1000)
 USER node
@@ -30,5 +30,5 @@ CMD [ "node", "index.js" ]
 
 # Build the docker image
 # docker build -t app-secured --file dockerfile-secured .
-# docker run -d -it -p 3000:3000 --rm app-secured
+# docker run -d -it -p 3000:3000 --rm app-secued
 # docker scout quickview app-secured
