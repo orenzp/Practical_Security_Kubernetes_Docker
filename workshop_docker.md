@@ -8,7 +8,7 @@ s
 
 3. Write down the size of the new image using `docker images app\*`
 
-4. Scan new image with `docker scount quickview app` and write down the number of vulnerability's.
+4. Scan new image with `docker scout quickview app` and write down the number of vulnerability's.
 
 5. Create .dockerignore file based on your project development language - Hint you can use CoPilot.
 
@@ -20,7 +20,7 @@ s
 
 9.  Check secure image size `docker images app\*` and compare with previous image
 
-10. Scan new image with `docker scount quickview app-secured` and compare with previses image
+10. Scan new image with `docker scout quickview app-secured` and compare with previses image
 
 11. Run the app-secure image in docker to check default user ID is not root. Use `docker run -d -it -p 3000:3000 --rm --name app-secured app-secured`. This will run the docker image in the background.
 
