@@ -1,5 +1,9 @@
 # Docker workshop steps
 
+In this workshop we will go over the steps on how to improve the security of a simple docker file
+
+As well as minimizing the size of the docker image we created.
+
 1. Build the current dockerfile (so we can see the difference between before and after) 
    `docker build -t app --file dockerfile .`
 
@@ -22,9 +26,9 @@
 
 10. Run docker build to create secure image, `docker build -t app-secured --file dockerfile .`
 
-11. Check secure image size `docker images app\*` and compare with previous image
+11. Check secure image size `docker images app\*` and compare with previous app image
 
-12. Scan new image with `docker scout quickview app-secured` and compare with previses image
+12. Scan new image with `docker scout quickview app-secured` and compare with previous app image.
 
 13. Run the app-secure image in docker to check default user ID is not root. Use `docker run -d -it -p 3000:3000 --rm --name app-secured app-secured`. This will run the docker image in the background.
 

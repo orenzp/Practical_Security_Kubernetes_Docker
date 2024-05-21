@@ -35,4 +35,15 @@ spec:
       port: 3000
       targetPort: 3000
   type: LoadBalancer
+---
+# add a simple kubernetes secret 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  username
+  password
+```
 
