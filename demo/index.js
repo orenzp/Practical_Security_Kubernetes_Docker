@@ -57,7 +57,7 @@ const router = express.Router();
 app.get('/', function (req, res) {
     const now = Date()
     const type = process.env.TYPE || 'Not Found';
-    return res.send(`Hello World! - ${now} - ${type}`);
+    return res.send(`Practical_Security_Kubernetes_Docker - ${now} - ${type}`);
 })
 
 app.get('/api', function (req, res) {

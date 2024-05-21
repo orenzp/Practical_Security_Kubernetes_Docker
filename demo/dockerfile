@@ -1,3 +1,5 @@
+# we will use this file to show 
+
 # Use an official Node.js runtime as the base image
 FROM node:14
 
@@ -19,10 +21,3 @@ CMD [ "node", "index.js" ]
 # 1. Minimize docker image size using multi-stage builds by using slim tagged node image
 
 # 2. Secure image by using a non-root user.
-
-
-# Build the docker image
-# docker build -t app .                                                                                                                                                 
-# docker run -d -it -p 3000:3000 --rm app
-# docker scout quickview app
-# docker scout cves app
