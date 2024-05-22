@@ -17,9 +17,9 @@ spec:
         app: app
     spec:
       securityContext:
-        #runAsUser: 1000
-        #runAsGroup: 1000
-        #runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
       containers:
       - name: app
         image: app
@@ -27,18 +27,20 @@ spec:
         env:
         - name: TYPE
           value: "app"
+        #- name: TEST_SECRET
+        #  value: "secret-inject@azurekeyvault" # ref to akvs
         volumeMounts:
         - name: app-secret
           mountPath: "/etc/secrets"
           readOnly: true
         securityContext:
-          #readOnlyRootFilesystem: true
-          #privileged: false
-          #allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          privileged: false
+          allowPrivilegeEscalation: false
       volumes:
       - name: app-secret
         secret:
-          secretName: app-secret    
+          secretName: app-secret
 ---
 apiVersion: v1
 kind: Service

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const testSecret = process.env.TEST_SECRET;
 
 app.get('/', (req, res) => {
   const now = new Date();
@@ -27,6 +28,8 @@ app.get('/', (req, res) => {
           ${now}
           <br/>
           ${type}
+          <br/>
+          Injected Secret: ${testSecret}
         </div>
       </body>
     </html>
