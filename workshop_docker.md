@@ -33,3 +33,4 @@ As well as minimizing the size of the docker image we created.
 13. Run the app-secure image in docker to check default user ID is not root. Use `docker run -d -it -p 3000:3000 --rm --name app-secured app-secured`. This will run the docker image in the background.
 
 14. Check to see your can access the application website via: [http](http://localhost:3000/)
+15. Cleanup docker by running command `docker stop app`
