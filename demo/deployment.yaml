@@ -28,7 +28,7 @@ spec:
         - name: TYPE
           value: "app"
         # - name: TEST_SECRET
-        #   value: "inject-secret@azurekeyvault" # ref to akvs
+        #   value: "secret-inject@azurekeyvault" # ref to akvs
         volumeMounts:
         - name: app-secret
           mountPath: "/etc/secrets"
