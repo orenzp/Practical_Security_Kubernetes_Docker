@@ -9,7 +9,7 @@ As well as minimizing the size of the docker image we created.
 
 2. Run the app image in docker. Use `docker run -d -it -p 3000:3000 --rm --name app app`. This will run the docker image in the background so we can connect to it.
 
-3. Check to see your can access the application website via: [http](http://localhost:3000/)
+3. Check to see your can access the application website via: [http://localhost:3000/](http://localhost:3000/)
 
 4. Write down the size of the new image using command `docker images app\*`. ( You can use docker desktop dashboard to get the image size as well)
 
